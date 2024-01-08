@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     
     private void Start()
     {
-        maxhp = GameResourse.Instance.getMaxHp();
+        maxhp = GameManager.Instance.getMaxHp();
         currentHp = maxhp;
 }
     private void OnTriggerEnter2D(Collider2D collision)

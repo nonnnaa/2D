@@ -19,13 +19,10 @@ public class GameResourse : MonoBehaviour
         }
     }
     [SerializeField] private List<CharactorSO> charactorInfor;
-    [SerializeField] public CharactorSO currentPlayerSO;
-    private void Start()
+
+    [SerializeField] private List<Item> listItem;
+    public CharactorSO getCurrentInforCharactor(int id)
     {
-        //currentPlayerSO = charactorInfor[1];
-    }
-    public int getMaxHp()
-    {
-        return currentPlayerSO.maxHP;
+        return charactorInfor[id];
     }
 }

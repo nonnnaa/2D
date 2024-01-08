@@ -2572,6 +2572,9 @@ MonoBehaviour:
   isOpenMusic: 1
   On: {fileID: 2780378938623473836}
   Off: {fileID: 2879470425927670925}
+  right: {fileID: 3834865026855897991}
+  left: {fileID: 797299623741067088}
+  SpawnCharactorPos: {fileID: 8654289494789062445}
 --- !u!1 &7786163582317323657
 GameObject:
   m_ObjectHideFlags: 0
