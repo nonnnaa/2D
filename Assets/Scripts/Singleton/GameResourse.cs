@@ -7,6 +7,7 @@ public class GameResourse : MonoBehaviour
     public static GameResourse Instance { get; private set; }
     private void Awake()
     {
+
         if(Instance != null && this != Instance)
         {
             Destroy(gameObject);
@@ -18,4 +19,13 @@ public class GameResourse : MonoBehaviour
         }
     }
     [SerializeField] private List<CharactorSO> charactorInfor;
+    [SerializeField] public CharactorSO currentPlayerSO;
+    private void Start()
+    {
+        //currentPlayerSO = charactorInfor[1];
+    }
+    public int getMaxHp()
+    {
+        return currentPlayerSO.maxHP;
+    }
 }

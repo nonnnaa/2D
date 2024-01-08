@@ -54,15 +54,16 @@ public class UIManager : MonoBehaviour
 
     public void LoadHome()
     {
-        SceneManager.LoadScene("Home");
+        SceneManager.LoadScene("StartGame");
     }
     public void Resume()
     {
         setting.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
-    public void Restart()
+    public void Game1()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game1");
+
     }
 }

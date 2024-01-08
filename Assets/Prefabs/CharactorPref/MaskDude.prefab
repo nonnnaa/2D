@@ -204,6 +204,8 @@ MonoBehaviour:
   isTouchingWall: 0
   isWallSliding: 0
   canJump: 0
+  isGetDame: 0
+  anim: {fileID: 0}
   ground:
     serializedVersion: 2
     m_Bits: 8
@@ -262,8 +264,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.19}
-  m_Size: {x: 1.14, y: 1.79}
+  m_Offset: {x: 0, y: -0.24}
+  m_Size: {x: 1.14, y: 1.6}
   m_Direction: 0
 --- !u!114 &5376038246877920797
 MonoBehaviour:
