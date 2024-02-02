@@ -6,25 +6,25 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-
-    // Game1 UI
-    #region Header Game1 UI
+    #region Header Game UI
     [Space(10)]
-    [Header("Game1 UI")]
-    #endregion
+    [Header("Game UI")]
     [SerializeField] public GameObject healthbar;
     [SerializeField] private GameObject setting;
+    #endregion
 
     [SerializeField] private bool isOpenMusic;
     [SerializeField] private Image On;
     [SerializeField] private Image Off;
-    // Home UI
+
     #region Header Home
     [Space(10)]
     [Header("Home")]
-    #endregion
+    [SerializeField] public GameObject Home;
+    [SerializeField] private GameObject selectLevel;
     [SerializeField] private Button right, left;
     [SerializeField] private GameObject SpawnCharactorPos;
+    #endregion
 
     private void Awake()
     {
@@ -43,14 +43,14 @@ public class UIManager : MonoBehaviour
         SpawnCharactorPos.gameObject.GetComponent<Image>().sprite = GameManager.Instance.getCurrentPlayerSprite();
     }
     // Game1
-    public void setHealthbar(float ratio)
+    public void SetHealthbar(float ratio)
     {
         healthbar.GetComponent<Image>().fillAmount = ratio;
     }
     public void SettingButton()
     {
         setting.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        GameManager.Instance.PauseGame();
     }
     public void SettingOpenMusic()
     {
@@ -67,35 +67,39 @@ public class UIManager : MonoBehaviour
             isOpenMusic = true;
         }
     }
-    public void LoadHome()
-    {
-        SceneManager.LoadScene("StartGame");
-    }
     public void Resume()
     {
         setting.gameObject.SetActive(false);
-        Time.timeScale = 1;
-    }
-    public void Game1()
-    {
-        SceneManager.LoadScene("Game1");
-
+        GameManager.Instance.ResumeGame();
     }
 
     // Home
-    public void nextCharactor()
+    public void NextCharactor()
     {
         int id = GameManager.Instance.getCurrentIndexCharactor() + 1;
         if (id > 3) id = 0;
         GameManager.Instance.setCurrentIndexCharactor(id);
         SpawnCharactorPos.gameObject.GetComponent<Image>().sprite = GameManager.Instance.getCurrentPlayerSprite();
     }
-    public void previousCharactor()
+    public void PreviousCharactor()
     {
         int id = GameManager.Instance.getCurrentIndexCharactor() - 1;
         if (id < 0) id = 3;
         GameManager.Instance.setCurrentIndexCharactor(id);
         SpawnCharactorPos.gameObject.GetComponent<Image>().sprite = GameManager.Instance.getCurrentPlayerSprite();
+    }
+
+
+    public void ChooseLevel1() => GameManager.Instance.setCurrentGameLevel(1);
+    public void ChooseLevel2() => GameManager.Instance.setCurrentGameLevel(2);
+    public void StartGame()
+    {
+        GameManager.Instance.LoadGame();
+    }
+    public void ChooseLevelPanel()
+    {
+        if(selectLevel.gameObject.activeSelf) selectLevel.SetActive(false);
+        else selectLevel.SetActive(true);
     }
 
 }

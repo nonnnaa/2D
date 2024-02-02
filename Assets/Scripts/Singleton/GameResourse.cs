@@ -19,10 +19,14 @@ public class GameResourse : MonoBehaviour
         }
     }
     [SerializeField] private List<CharactorSO> charactorInfor;
-
+    [SerializeField] private List<Transform> spawnPos;
     [SerializeField] private List<Item> listItem;
     public CharactorSO getCurrentInforCharactor(int id)
     {
         return charactorInfor[id];
+    }
+    public Transform getPositionSpawnPlayer(int level)
+    {
+        return spawnPos[level];
     }
 }

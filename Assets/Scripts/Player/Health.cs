@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
         {
             currentHp++;
             Destroy(collision.gameObject);
-            UIManager.Instance.setHealthbar((float)currentHp / maxhp);
+            UIManager.Instance.SetHealthbar((float)currentHp / maxhp);
         }
     }
 
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
     private void TakeDame()
     {
         currentHp--;
-        UIManager.Instance.setHealthbar((float)currentHp / maxhp);
+        UIManager.Instance.SetHealthbar((float)currentHp / maxhp);
         PlayerController.Instance.anim.SetTrigger("GetDame");
         if (currentHp <= 0) Die();
     }

@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e9364fa4084994db3084398900428a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerSO: {fileID: 11400000, guid: 6b4f5887333c45147a7066b4fbf26f86, type: 2}
+  currentPlayerSO: {fileID: 0}
   currentIndexCharactor: 0
+  currentGameLevel: 0
