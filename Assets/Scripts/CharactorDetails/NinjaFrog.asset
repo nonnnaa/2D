@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactorName: NinjaFrog
   maxHP: 5
-  charactorPrefab: {fileID: 6443198534911142783, guid: 11f5b06a18c7d3540ae508eca9713248, type: 3}
+  charactorPrefab: {fileID: 8443396615947623907, guid: 1da5a5e0b22744f448e36062a68fb2f9, type: 3}
   spriteCharactor: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}

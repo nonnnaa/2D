@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,12 +41,12 @@ public class PlayerController : MonoBehaviour
             Instance = this;
         }
     }
+    public LayerMask setGround(LayerMask layer) => ground = layer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
     }
     void Update()
     {

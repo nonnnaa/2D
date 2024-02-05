@@ -73,13 +73,13 @@ GameObject:
   - component: {fileID: 569933645883117310}
   - component: {fileID: 1385532241380138736}
   - component: {fileID: 5837824674721428924}
-  - component: {fileID: 5551902056739578126}
   - component: {fileID: 3330452175210962677}
   - component: {fileID: 3697337307652186759}
   - component: {fileID: 5376038246877920797}
+  - component: {fileID: 5551902056739578126}
   m_Layer: 0
   m_Name: PinkMan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,37 +180,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5551902056739578126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6443198534911142783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a220b4e99111712488360005b7ed9ce9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpPower: 15
-  radiusGroundCheck: 0.3
-  wallCheckDistance: 0.7
-  wallSlidingSpeed: 0.5
-  jumpCount: 0
-  isRun: 0
-  isGrounded: 0
-  isFacingRight: 1
-  isTouchingWall: 0
-  isWallSliding: 0
-  canJump: 0
-  isGetDame: 0
-  anim: {fileID: 0}
-  ground:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheckPos: {fileID: 7751521306867631734}
-  wallCheckPos: {fileID: 7432543222438632458}
 --- !u!95 &3330452175210962677
 Animator:
   serializedVersion: 5
@@ -280,3 +249,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
+--- !u!114 &5551902056739578126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443198534911142783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a220b4e99111712488360005b7ed9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpPower: 15
+  radiusGroundCheck: 0.2
+  wallCheckDistance: 0.7
+  wallSlidingSpeed: 0.7
+  jumpCount: 0
+  isRun: 0
+  isGrounded: 0
+  isFacingRight: 1
+  isTouchingWall: 0
+  isWallSliding: 0
+  canJump: 0
+  isGetDame: 0
+  anim: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckPos: {fileID: 7751521306867631734}
+  wallCheckPos: {fileID: 7432543222438632458}

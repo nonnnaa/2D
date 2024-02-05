@@ -18,15 +18,10 @@ public class GameResourse : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    [SerializeField] private List<CharactorSO> charactorInfor;
-    [SerializeField] private List<Transform> spawnPos;
-    [SerializeField] private List<Item> listItem;
-    public CharactorSO getCurrentInforCharactor(int id)
+    public List<CharactorSO> charactorInfor;
+    public List<Item> listItem;
+    public CharactorSO getCurrentInforCharactor(int id) 
     {
         return charactorInfor[id];
-    }
-    public Transform getPositionSpawnPlayer(int level)
-    {
-        return spawnPos[level];
     }
 }

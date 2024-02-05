@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - Fruit
+  - SpawnPosPlayer
   layers:
   - Default
   - TransparentFX

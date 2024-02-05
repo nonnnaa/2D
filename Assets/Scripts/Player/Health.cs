@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     {
         maxhp = GameManager.Instance.getMaxHp();
         currentHp = maxhp;
-}
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
@@ -22,14 +22,14 @@ public class Health : MonoBehaviour
             {
                 isInvincible = true;
                 TakeDame();
-                StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 2.0f));
+                StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1.3f));
             }
         }
         if(collision.gameObject.CompareTag("Fruit"))
         {
             currentHp++;
             Destroy(collision.gameObject);
-            UIManager.Instance.SetHealthbar((float)currentHp / maxhp);
+            GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         }
     }
 
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
     private void TakeDame()
     {
         currentHp--;
-        UIManager.Instance.SetHealthbar((float)currentHp / maxhp);
+        GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         PlayerController.Instance.anim.SetTrigger("GetDame");
         if (currentHp <= 0) Die();
     }
