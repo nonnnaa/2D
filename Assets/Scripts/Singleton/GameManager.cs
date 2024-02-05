@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     }
     public void GamePlay()
     {
+
     }
     public void GamePause()
     {

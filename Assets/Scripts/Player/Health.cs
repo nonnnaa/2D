@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    public static Health Instance;
     [SerializeField] private int currentHp;
-    private bool isInvincible = false;
+    [SerializeField] private bool isInvincible;
     private int maxhp;
-    
+    private void Awake()
+    {
+        if (Instance != null && this != Instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     private void Start()
     {
         maxhp = GameManager.Instance.getMaxHp();
@@ -21,7 +34,7 @@ public class Health : MonoBehaviour
             if (!isInvincible)
             {
                 isInvincible = true;
-                TakeDame();
+                TakeDame(1);
                 StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1.3f));
             }
         }
@@ -41,9 +54,9 @@ public class Health : MonoBehaviour
         isInvincible = false;
     }
 
-    private void TakeDame()
+    public void TakeDame(int dame)
     {
-        currentHp--;
+        currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         PlayerController.Instance.anim.SetTrigger("GetDame");
         if (currentHp <= 0) Die();
@@ -52,6 +65,8 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        PlayerController.Instance.anim.SetTrigger("die");
+        gameObject.SetActive(false);
         Debug.Log("Game Over!");
     }
 }

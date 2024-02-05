@@ -27,15 +27,15 @@ public class HomeUI : MonoBehaviour
     }
     void Start()
     { 
-        StartCoroutine(LoadChar(GameManager.Instance.getCurrentIndexCharactor()));
+        StartCoroutine(LoadChar());
     }
-    IEnumerator LoadChar(int id)
+    public IEnumerator LoadChar()
     {
         Destroy(GameObject.Find("newChar"));
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0f);
         GameObject newChar = Instantiate(GameManager.Instance.getCurrentPlayerPrefab(), spawnCharactorPos.position, Quaternion.identity);
-        newChar.GetComponent<PlayerController>().setGround(LayerMask.NameToLayer("Everything"));
         newChar.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        newChar.GetComponent<PlayerController>().setGround(LayerMask.NameToLayer("Everything"));
         newChar.name = "newChar";
     }
     public void NextCharactor()
@@ -43,14 +43,14 @@ public class HomeUI : MonoBehaviour
         int id = GameManager.Instance.getCurrentIndexCharactor() + 1;
         if (id > 3) id = 0;
         GameManager.Instance.setCurrentIndexCharactor(id);
-        StartCoroutine(LoadChar(id));
+        StartCoroutine(LoadChar());
     }
     public void PreviousCharactor()
     {
         int id = GameManager.Instance.getCurrentIndexCharactor() - 1;
         if (id < 0) id = 3;
         GameManager.Instance.setCurrentIndexCharactor(id);
-        StartCoroutine(LoadChar(id));
+        StartCoroutine(LoadChar());
     }
 
 

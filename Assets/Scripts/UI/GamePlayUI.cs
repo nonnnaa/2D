@@ -43,8 +43,11 @@ public class GamePlayUI : MonoBehaviour
     }
     public void SettingButton()
     {
-        setting.gameObject.SetActive(true);
-        GameManager.Instance.GamePause();
+        if (!setting.gameObject.activeSelf)
+        {
+            setting.gameObject.SetActive(true);
+            GameManager.Instance.GamePause();
+        }
     }
     public void SettingOpenMusic()
     {
@@ -63,15 +66,24 @@ public class GamePlayUI : MonoBehaviour
     }
     public void Resume()
     {
-        setting.gameObject.SetActive(false);
-        GameManager.Instance.ResumeGame();
+        if (setting.gameObject.activeSelf)
+        {
+            setting.gameObject.SetActive(false);
+            GameManager.Instance.ResumeGame();
+        }
     }
     public void Restart()
     {
         GameManager.Instance.LoadGame();
     }
-    public void Home()
+    public void LoadHome()
     {
-        SceneManager.LoadScene("0");
+        StartCoroutine(Home());
+    }
+    public IEnumerator Home()
+    {
+        SceneManager.LoadScene(0);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(HomeUI.Instance.LoadChar());
     }
 }

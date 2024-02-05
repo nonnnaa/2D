@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapController : MonoBehaviour
+public class Spike : MonoBehaviour
 {
     Animator animator;
     [SerializeField] private float repeatTime;
@@ -12,7 +12,6 @@ public class TrapController : MonoBehaviour
         StartCoroutine("RepeatAnimation");
     }
 
-    // Update is called once per frame
     void Update()
     {
 
