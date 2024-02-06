@@ -78,12 +78,6 @@ public class GamePlayUI : MonoBehaviour
     }
     public void LoadHome()
     {
-        StartCoroutine(Home());
-    }
-    public IEnumerator Home()
-    {
         SceneManager.LoadScene(0);
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(HomeUI.Instance.LoadChar());
     }
 }

@@ -31,12 +31,11 @@ public class HomeUI : MonoBehaviour
     }
     public IEnumerator LoadChar()
     {
-        Destroy(GameObject.Find("newChar"));
+        if(GameObject.FindGameObjectWithTag("Player") != null) Destroy(GameObject.FindGameObjectWithTag("Player"));
         yield return new WaitForSeconds(0f);
         GameObject newChar = Instantiate(GameManager.Instance.getCurrentPlayerPrefab(), spawnCharactorPos.position, Quaternion.identity);
         newChar.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         newChar.GetComponent<PlayerController>().setGround(LayerMask.NameToLayer("Everything"));
-        newChar.name = "newChar";
     }
     public void NextCharactor()
     {

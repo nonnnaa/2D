@@ -275,7 +275,6 @@ MonoBehaviour:
   isWallSliding: 0
   canJump: 0
   isGetDame: 0
-  anim: {fileID: 0}
   ground:
     serializedVersion: 2
     m_Bits: 8

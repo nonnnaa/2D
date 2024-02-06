@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerSO: {fileID: 0}
   currentIndexCharactor: 0
-  currentGameLevel: 0
+  currentGameLevel: 1

@@ -24,20 +24,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+        currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
     private void Start()
     {
-        currentIndexCharactor = 0;
-        currentGameLevel = 1;
-        currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
-        GameHome();
+
     }
 
     public void LoadGame()
     {
         SceneManager.LoadScene(currentGameLevel);
-        GamePlay();
     }
     public int getMaxHp() => currentPlayerSO.maxHP;
     public int getCurrentIndexCharactor() => currentIndexCharactor;
@@ -53,14 +49,6 @@ public class GameManager : MonoBehaviour
     {
         currentGameLevel = lv;
         Debug.Log($"Game level {lv}");
-    }
-    public void GameHome()
-    {
-
-    }
-    public void GamePlay()
-    {
-
     }
     public void GamePause()
     {

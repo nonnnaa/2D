@@ -58,15 +58,20 @@ public class Health : MonoBehaviour
     {
         currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
-        PlayerController.Instance.anim.SetTrigger("GetDame");
-        if (currentHp <= 0) Die();
+        PlayerController.Instance.GetAnimator().SetTrigger("GetDame");
+        if (currentHp <= 0)
+        {
+            StartCoroutine("Die");
+        }
     }
 
 
-    private void Die()
+    IEnumerator Die()
     {
-        PlayerController.Instance.anim.SetTrigger("die");
+        PlayerController.Instance.GetAnimator().SetTrigger("die");
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
         Debug.Log("Game Over!");
     }
+    public bool getIsInvisible() => isInvincible;
 }

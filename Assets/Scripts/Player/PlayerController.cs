@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canJump;
     [SerializeField] public bool isGetDame;
 
-    public Animator anim;
+    private Animator anim;
     private Rigidbody2D rb;
     [SerializeField] private LayerMask ground;
     
@@ -40,13 +40,14 @@ public class PlayerController : MonoBehaviour
         {
             Instance = this;
         }
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     public LayerMask setGround(LayerMask layer) => ground = layer;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim.SetTrigger("ap");
     }
     void Update()
     {
@@ -74,9 +75,13 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMove()
     {
-        rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
-        if(isWallSliding)
-            rb.velocity = new Vector2(rb.velocity.x, -wallSlidingSpeed);
+        if(Health.Instance.getIsInvisible() == false)
+        {
+            rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
+            if(isWallSliding)
+                rb.velocity = new Vector2(rb.velocity.x, -wallSlidingSpeed);
+        }
+
     }
     void Update_Anim()
     {
@@ -118,4 +123,5 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(wallCheckPos.position, 
             new Vector3(wallCheckPos.position.x + wallCheckDistance, wallCheckPos.position.y, wallCheckPos.position.z));
     }
+    public Animator GetAnimator() => anim;
 }
