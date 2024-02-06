@@ -4,16 +4,16 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using TMPro;
 public class GamePlayUI : MonoBehaviour
 {
     public static GamePlayUI Instance;
-    #region Header Game UI
-    [Space(10)]
+
     [Header("Game UI")]
     [SerializeField] private GameObject healthbar;
     [SerializeField] private GameObject setting;
-    #endregion
-
+    [SerializeField] private GameObject gameOver_WinPanel;
+    [SerializeField] private TextMeshProUGUI gameText;
     [SerializeField] private bool isOpenMusic;
     [SerializeField] private Image On;
     [SerializeField] private Image Off;
@@ -46,9 +46,9 @@ public class GamePlayUI : MonoBehaviour
         if (!setting.gameObject.activeSelf)
         {
             setting.gameObject.SetActive(true);
-            GameManager.Instance.GamePause();
         }
     }
+
     public void SettingOpenMusic()
     {
         if (isOpenMusic == true)
@@ -72,6 +72,11 @@ public class GamePlayUI : MonoBehaviour
             GameManager.Instance.ResumeGame();
         }
     }
+    public void GameOver_WinPanel(string s)
+    {
+        gameText.text = s;
+        gameOver_WinPanel.SetActive(true);
+    }
     public void Restart()
     {
         GameManager.Instance.LoadGame();
@@ -79,5 +84,9 @@ public class GamePlayUI : MonoBehaviour
     public void LoadHome()
     {
         SceneManager.LoadScene(0);
+    }
+    public GameObject getGameOver_WinPanel()
+    {
+        return gameOver_WinPanel;
     }
 }

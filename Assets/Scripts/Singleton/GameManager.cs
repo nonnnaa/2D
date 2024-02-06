@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using Unity.VisualScripting;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -24,17 +25,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
     private void Start()
     {
-
+        currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
 
-    public void LoadGame()
-    {
-        SceneManager.LoadScene(currentGameLevel);
-    }
+    public void LoadGame() => SceneManager.LoadScene(currentGameLevel);
     public int getMaxHp() => currentPlayerSO.maxHP;
     public int getCurrentIndexCharactor() => currentIndexCharactor;
     public void setCurrentIndexCharactor(int id)
@@ -50,16 +47,10 @@ public class GameManager : MonoBehaviour
         currentGameLevel = lv;
         Debug.Log($"Game level {lv}");
     }
-    public void GamePause()
+    public void GamePause() => Time.timeScale = 0;
+    public void ResumeGame() => Time.timeScale = 1;
+    public void GameOver_Win(String check)
     {
-        Time.timeScale = 0;
-    }
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-    }
-    public void GameOver()
-    {
-
+        GamePlayUI.Instance.GameOver_WinPanel(check);
     }
 }

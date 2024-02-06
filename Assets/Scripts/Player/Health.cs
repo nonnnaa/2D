@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
             {
                 isInvincible = true;
                 TakeDame(1);
-                StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1.3f));
+                StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1f));
             }
         }
         if(collision.gameObject.CompareTag("Fruit"))
@@ -69,9 +69,9 @@ public class Health : MonoBehaviour
     IEnumerator Die()
     {
         PlayerController.Instance.GetAnimator().SetTrigger("die");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         gameObject.SetActive(false);
-        Debug.Log("Game Over!");
+        GameManager.Instance.GameOver_Win("Lose !");
     }
     public bool getIsInvisible() => isInvincible;
 }
