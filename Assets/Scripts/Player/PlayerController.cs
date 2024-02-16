@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
             if(isWallSliding)
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlidingSpeed);
         }
-
     }
     void Update_Anim()
     {

@@ -36,6 +36,7 @@ public class Health : MonoBehaviour
                 isInvincible = true;
                 TakeDame(1);
                 StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1f));
+                isInvincible = false;
             }
         }
         if(collision.gameObject.CompareTag("Fruit"))
@@ -51,7 +52,6 @@ public class Health : MonoBehaviour
         collider.enabled = false;
         yield return new WaitForSeconds(delay);
         collider.enabled = true;
-        isInvincible = false;
     }
 
     public void TakeDame(int dame)
