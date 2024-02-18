@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 3697337307652186759}
   - component: {fileID: 5376038246877920797}
   - component: {fileID: 5551902056739578126}
+  - component: {fileID: 8981208776298682022}
   m_Layer: 0
   m_Name: VirtualGuy
   m_TagString: Player
@@ -280,3 +281,15 @@ MonoBehaviour:
     m_Bits: 8
   groundCheckPos: {fileID: 7751521306867631734}
   wallCheckPos: {fileID: 7432543222438632458}
+--- !u!114 &8981208776298682022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443198534911142783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d51344932f2d147a27776090001ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

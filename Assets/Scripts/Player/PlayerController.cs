@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameObject.name = "Player";
         anim.SetTrigger("ap");
     }
     void Update()
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMove()
     {
-        if(Health.Instance.getIsInvisible() == false)
+        if(Health.Instance.GetIsInvisible() == false)
         {
             rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
             if(isWallSliding)

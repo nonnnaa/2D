@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharactorSO currentPlayerSO;
     [SerializeField] private int currentIndexCharactor;
     [SerializeField] private int currentGameLevel;
+    [SerializeField] private GameObject currentPlayer;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
-
+    public GameObject SetCurrentPlayer(GameObject player) => currentPlayer = player;
     public void LoadGame() => SceneManager.LoadScene(currentGameLevel);
     public int getMaxHp() => currentPlayerSO.maxHP;
     public int getCurrentIndexCharactor() => currentIndexCharactor;
@@ -51,6 +52,12 @@ public class GameManager : MonoBehaviour
     public void ResumeGame() => Time.timeScale = 1;
     public void GameOver_Win(String check)
     {
-        GamePlayUI.Instance.GameOver_WinPanel(check);
+        StartCoroutine("WinGame");
+    }
+    IEnumerator WinGame()
+    {
+        Health.Instance.Die();
+        GamePlayUI.Instance.GameOver_WinPanel("win");
+        yield return null;
     }
 }

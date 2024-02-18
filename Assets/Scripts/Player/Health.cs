@@ -61,17 +61,21 @@ public class Health : MonoBehaviour
         PlayerController.Instance.GetAnimator().SetTrigger("GetDame");
         if (currentHp <= 0)
         {
-            StartCoroutine("Die");
+            Die();
         }
     }
 
-
-    IEnumerator Die()
+    public void Die()
+    {
+        StartCoroutine("IDie");
+    }
+    IEnumerator IDie()
     {
         PlayerController.Instance.GetAnimator().SetTrigger("die");
         yield return new WaitForSeconds(0.3f);
         gameObject.SetActive(false);
         GameManager.Instance.GameOver_Win("Lose !");
     }
-    public bool getIsInvisible() => isInvincible;
+    public bool GetIsInvisible() => isInvincible;
+    public float GetCurrentHp() => currentHp;
 }

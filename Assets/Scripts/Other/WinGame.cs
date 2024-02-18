@@ -16,6 +16,7 @@ public class WinGame : MonoBehaviour
             animator.SetTrigger("win");
             GameManager.Instance.GameOver_Win("Win !");
             Debug.Log("va cham Goal!");
+            GameManager.Instance.
         }
     }
 }
