@@ -64,13 +64,11 @@ public class PlayerController : MonoBehaviour
     private void MoveInput()
     {
         h = Input.GetAxisRaw("Horizontal");
-
         if ((h < 0 && isFacingRight) || (h > 0 && !isFacingRight))
             Flip();
         
         if (h != 0) isRun = true;
         else isRun = false;
-
 
         if (Input.GetKeyDown(KeyCode.Space)) Jump();
     }

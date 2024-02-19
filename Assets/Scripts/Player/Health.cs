@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public static Health Instance;
-    [SerializeField] private int currentHp;
+    [SerializeField] private float currentHp;
     [SerializeField] private bool isInvincible;
     private int maxhp;
     private void Awake()
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
             GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         }
     }
-    public void GetDame(int dame)
+    public void GetDame(float dame)
     {
         currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
