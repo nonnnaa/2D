@@ -35,7 +35,6 @@ public class Health : MonoBehaviour
             {
                 isInvincible = true;
                 GetDame(1);
-                //StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1f));
                 isInvincible = false;
             }
         }
@@ -46,14 +45,6 @@ public class Health : MonoBehaviour
             GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         }
     }
-
-    private IEnumerator EnableColliderAfterDelay(BoxCollider2D collider, float delay)
-    {
-        collider.enabled = false;
-        yield return new WaitForSeconds(delay);
-        collider.enabled = true;
-    }
-
     public void GetDame(int dame)
     {
         currentHp -= dame;
