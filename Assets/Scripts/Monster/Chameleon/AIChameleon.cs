@@ -12,7 +12,6 @@ public class AIChameleon : MonoBehaviour
     [SerializeField] private float delayTimeAttack;
     [SerializeField] private bool canAttack;
     [SerializeField] private bool isRun;
-    [SerializeField] bool isFacingRight;
     private Animator animator;
     private Rigidbody2D rb;
 
@@ -104,5 +103,10 @@ public class AIChameleon : MonoBehaviour
         animator.SetTrigger("die");
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+    }
+
+    public void TakeDame()
+    {
+        Health.Instance.GetDame(2);
     }
 }
