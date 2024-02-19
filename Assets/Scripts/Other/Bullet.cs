@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Health.Instance.TakeDame(1);
+            Health.Instance.GetDame(1);
             Destroy(gameObject);
         }
     }

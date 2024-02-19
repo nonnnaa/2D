@@ -14,9 +14,8 @@ public class WinGame : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             animator.SetTrigger("win");
-            GameManager.Instance.GameOver_Win("Win !");
+            GameManager.Instance.WinGame();
             Debug.Log("va cham Goal!");
-            GameManager.Instance.
         }
     }
 }

@@ -25,21 +25,24 @@ public class Plant : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (canAttack)
-            {
-                canAttack = false;
-                StartCoroutine("Attack");
-            }
+            canAttack = true;
+            StartCoroutine("Attack");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canAttack = false;
         }
     }
     IEnumerator Attack()
     {
-        animator.SetTrigger("attack");
-        SpawnBullet();
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        yield return new WaitForSeconds(delayAttack);
-        gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        canAttack = true;
+        while (canAttack == true)
+        {
+            animator.SetTrigger("attack");
+            yield return new WaitForSeconds(delayAttack);
+        }
     }
     public void SpawnBullet()
     {

@@ -6,16 +6,15 @@ public class HomeBG : MonoBehaviour
 {
     [SerializeField] private Vector2 v;
     private Material material;
-    Vector2 offset;
+    private Vector2 offset;
     private void Start()
     {
-        material = GetComponent<Material>();
+        material = GetComponent<SpriteRenderer>().material;
     }
     private void Update()
     {
         offset = v * Time.deltaTime;
-        if (offset.x >= 4.435) offset = Vector2.zero;
         material.mainTextureOffset += offset;
-
+        if (material.mainTextureOffset.x > 100f) material.mainTextureOffset = Vector2.zero;
     }
 }

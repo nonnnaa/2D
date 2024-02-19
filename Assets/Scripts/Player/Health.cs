@@ -34,8 +34,8 @@ public class Health : MonoBehaviour
             if (!isInvincible)
             {
                 isInvincible = true;
-                TakeDame(1);
-                StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1f));
+                GetDame(1);
+                //StartCoroutine(EnableColliderAfterDelay(collision.gameObject.GetComponent<BoxCollider2D>(), 1f));
                 isInvincible = false;
             }
         }
@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
         collider.enabled = true;
     }
 
-    public void TakeDame(int dame)
+    public void GetDame(int dame)
     {
         currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
@@ -73,8 +73,8 @@ public class Health : MonoBehaviour
     {
         PlayerController.Instance.GetAnimator().SetTrigger("die");
         yield return new WaitForSeconds(0.3f);
+        GamePlayUI.Instance.GameOver_WinPanel("Lose !");
         gameObject.SetActive(false);
-        GameManager.Instance.GameOver_Win("Lose !");
     }
     public bool GetIsInvisible() => isInvincible;
     public float GetCurrentHp() => currentHp;

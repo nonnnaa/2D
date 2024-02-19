@@ -50,14 +50,15 @@ public class GameManager : MonoBehaviour
     }
     public void GamePause() => Time.timeScale = 0;
     public void ResumeGame() => Time.timeScale = 1;
-    public void GameOver_Win(String check)
+    public void WinGame()
     {
-        StartCoroutine("WinGame");
+        StartCoroutine("Win");
     }
-    IEnumerator WinGame()
+    IEnumerator Win()
     {
-        Health.Instance.Die();
-        GamePlayUI.Instance.GameOver_WinPanel("win");
-        yield return null;
+        PlayerController.Instance.GetAnimator().SetTrigger("die");
+        yield return new WaitForSeconds(0.3f);
+        GamePlayUI.Instance.GameOver_WinPanel("Win !");
+        currentPlayer.SetActive(false);
     }
 }
