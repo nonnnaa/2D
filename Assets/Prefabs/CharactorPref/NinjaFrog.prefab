@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpPower: 15
+  jumpPower: 12
   radiusGroundCheck: 0.2
   wallCheckDistance: 0.7
   wallSlidingSpeed: 0.7
