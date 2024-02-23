@@ -15,8 +15,9 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] private GameObject gameOver_WinPanel;
     [SerializeField] private TextMeshProUGUI gameText;
     [SerializeField] private bool isOpenMusic;
-    [SerializeField] private Image On;
-    [SerializeField] private Image Off;
+    [SerializeField] private Button musicButton;
+    [SerializeField] private Sprite On;
+    [SerializeField] private Sprite Off;
     private void Awake()
     {
         if (Instance != null && this != Instance)
@@ -53,14 +54,12 @@ public class GamePlayUI : MonoBehaviour
     {
         if (isOpenMusic == true)
         {
-            On.gameObject.SetActive(false);
-            Off.gameObject.SetActive(true);
+            musicButton.image.sprite = Off;
             isOpenMusic = false;
         }
         else
         {
-            On.gameObject.SetActive(true);
-            Off.gameObject.SetActive(false);
+            musicButton.image.sprite = On;
             isOpenMusic = true;
         }
     }

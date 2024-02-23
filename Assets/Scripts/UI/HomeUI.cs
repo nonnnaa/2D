@@ -28,6 +28,7 @@ public class HomeUI : MonoBehaviour
     void Start()
     { 
         StartCoroutine(LoadChar());
+        DisplayTextLevel();
     }
     public IEnumerator LoadChar()
     {
@@ -56,12 +57,16 @@ public class HomeUI : MonoBehaviour
     public void ChooseLevel1()
     {
         GameManager.Instance.setCurrentGameLevel(1);
-        levelText.text = "Level (1)";
+        DisplayTextLevel();
     }
     public void ChooseLevel2()
     {
         GameManager.Instance.setCurrentGameLevel(2);
-        levelText.text = "Level (2)";
+        DisplayTextLevel();
+    }
+    public void DisplayTextLevel()
+    {
+        levelText.text = "Lv " + GameManager.Instance.getCurrentGameLevel().ToString();
     }
     public void StartGame()
     {

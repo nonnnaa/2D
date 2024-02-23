@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentIndexCharactor;
     [SerializeField] private int currentGameLevel;
     [SerializeField] private GameObject currentPlayer;
-
+    
     private void Awake()
     {
 
@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         currentGameLevel = lv;
         Debug.Log($"Game level {lv}");
     }
+    public int getCurrentGameLevel() => currentGameLevel;
     public void GamePause() => Time.timeScale = 0;
     public void ResumeGame() => Time.timeScale = 1;
     public void WinGame()

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameResourse : MonoBehaviour
 {
-    public static GameResourse Instance { get; private set; }
+    public static GameResourse Instance { get; private set; } 
+
     private void Awake()
     {
 
@@ -17,6 +19,7 @@ public class GameResourse : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
     }
     public List<CharactorSO> charactorInfor;
     public List<Item> listItem;
