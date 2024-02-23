@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
 {
     public static Health Instance;
     [SerializeField] private float currentHp;
-    [SerializeField] private bool isInvincible;
     private int maxhp;
     private void Awake()
     {
@@ -30,13 +29,8 @@ public class Health : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
-        {
-            if (!isInvincible)
-            {
-                isInvincible = true;
-                GetDame(1);
-                isInvincible = false;
-            }
+        { 
+            GetDame(1);
         }
         if(collision.gameObject.CompareTag("Fruit"))
         {
@@ -67,6 +61,5 @@ public class Health : MonoBehaviour
         GamePlayUI.Instance.GameOver_WinPanel("Lose !");
         gameObject.SetActive(false);
     }
-    public bool GetIsInvisible() => isInvincible;
     public float GetCurrentHp() => currentHp;
 }

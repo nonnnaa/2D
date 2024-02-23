@@ -74,12 +74,9 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMove()
     {
-        if(Health.Instance.GetIsInvisible() == false)
-        {
-            rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
-            if(isWallSliding)
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlidingSpeed);
-        }
+        rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
+        if(isWallSliding)
+            rb.velocity = new Vector2(rb.velocity.x, -wallSlidingSpeed);
     }
     void Update_Anim()
     {

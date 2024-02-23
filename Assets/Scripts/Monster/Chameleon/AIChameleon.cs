@@ -81,17 +81,6 @@ public class AIChameleon : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             canAttack = false;
-            StartCoroutine("ReturnStartPos");
-        }
-    }
-
-    IEnumerator ReturnStartPos()
-    {
-        while (transform.position != startPos)
-        {
-            Vector2 direc = (startPos - transform.position).normalized;
-            rb.velocity = direc * speedMove * Time.deltaTime;
-            yield return null;
         }
     }
     public void Die()

@@ -20,8 +20,8 @@ public class Spike : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(repeatTime);
             animator.SetTrigger("play");
+            yield return new WaitForSeconds(repeatTime);
         }
     }
 }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
+    public Vector3 GetPlayerPosition() => currentPlayer.transform.position;
     public GameObject SetCurrentPlayer(GameObject player) => currentPlayer = player;
     public GameObject GetCurrentPlayer() => currentPlayer;
     public void LoadGame() => SceneManager.LoadScene(currentGameLevel);
