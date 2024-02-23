@@ -40,8 +40,8 @@ public class Plant : MonoBehaviour
     {
         while (canAttack == true)
         {
-            animator.SetTrigger("attack");
             yield return new WaitForSeconds(delayAttack);
+            animator.SetTrigger("attack");
         }
     }
     public void SpawnBullet()

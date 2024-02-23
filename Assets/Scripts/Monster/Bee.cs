@@ -1,13 +1,15 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 public class Bee : MonoBehaviour
 {
     [SerializeField] private float timeDelayAttack;
     [SerializeField] private float offSet;
-    [SerializeField] private bool canAttack;
     [SerializeField] private float attackDistance;
-
+    [SerializeField] private Transform attackPos;
+    [SerializeField] private bool canAttack;
+    [SerializeField] private GameObject bullet;
 
     [SerializeField] private float distance;
     Animator animator;
@@ -25,11 +27,12 @@ public class Bee : MonoBehaviour
         Vector3 targerPos = GameManager.Instance.GetPlayerPosition();
         agent.SetDestination(new Vector3(targerPos.x, targerPos.y + offSet, targerPos.z));
         distance = (targerPos - transform.position).magnitude;
-        if ((distance <= attackDistance) && !canAttack)
+        if (distance <= attackDistance && canAttack == false)
         {
             canAttack = true;
             StartCoroutine("Attack");
-        }else canAttack = false;
+        }
+        if(distance > attackDistance) canAttack = false;
     }
     IEnumerator Attack()
     {
@@ -44,7 +47,6 @@ public class Bee : MonoBehaviour
     { 
         if (collision.gameObject.CompareTag("Trap"))
         {
-            Debug.Log("va cham");
             StartCoroutine("Die");
         }
     }
@@ -54,5 +56,12 @@ public class Bee : MonoBehaviour
         animator.SetTrigger("die");
         yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
+    }
+
+    public void SpawnBullet()
+    {
+        var bul = Instantiate(bullet, attackPos.position, Quaternion.identity);
+        Vector2 dir = (GameManager.Instance.GetPlayerPosition() - transform.position).normalized;
+        bul.GetComponent<Rigidbody2D>().AddForce(dir * 5f, ForceMode2D.Impulse);
     }
 }
