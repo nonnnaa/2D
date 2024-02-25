@@ -34,6 +34,8 @@ public class Health : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Fruit"))
         {
+            AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("collector"),
+                                        GameObject.FindGameObjectWithTag("MainCamera").transform.position);
             currentHp++;
             Destroy(collision.gameObject);
             GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
@@ -41,6 +43,8 @@ public class Health : MonoBehaviour
     }
     public void GetDame(float dame)
     {
+        AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("hit"),
+                                    GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         PlayerController.Instance.GetAnimator().SetTrigger("GetDame");
@@ -56,6 +60,8 @@ public class Health : MonoBehaviour
     }
     IEnumerator IDie()
     {
+        AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("lose"),
+                                    GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         PlayerController.Instance.GetAnimator().SetTrigger("die");
         yield return new WaitForSeconds(0.3f);
         GamePlayUI.Instance.GameOver_WinPanel("Lose !");

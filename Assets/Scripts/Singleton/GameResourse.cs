@@ -5,8 +5,22 @@ using UnityEngine;
 
 public class GameResourse : MonoBehaviour
 {
-    public static GameResourse Instance { get; private set; } 
+    public enum AudioClipEnum
+    {
+        // player audio
+        jump,
+        hit,
+        collector,
 
+        // game audio
+        win,
+        lose,
+
+        // other
+        kickButton
+    }
+
+    public static GameResourse Instance { get; private set; }
     private void Awake()
     {
 
@@ -21,10 +35,31 @@ public class GameResourse : MonoBehaviour
         }
 
     }
-    public List<CharactorSO> charactorInfor;
-    public List<Item> listItem;
+    [SerializeField] private List<CharactorSO> charactorInfor;
+    [SerializeField] private List<AudioClip> audioClip;
     public CharactorSO getCurrentInforCharactor(int id) 
     {
         return charactorInfor[id];
+    }
+    public AudioClip getAudioClip(string name)
+    {
+        switch (name)
+        { 
+            case "jump":
+                return audioClip[0];
+            case "hit":
+                return audioClip[1];
+            case "collector":
+                return audioClip[2];
+            case "win":
+                return audioClip[3];
+            case "lose":
+                return audioClip[4];
+            case "kickButton":
+                return audioClip[5];
+            case "appearing":
+                return audioClip[6];
+        }
+        return null;
     }
 }

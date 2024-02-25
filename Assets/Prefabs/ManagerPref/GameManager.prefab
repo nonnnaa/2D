@@ -47,3 +47,5 @@ MonoBehaviour:
   currentPlayerSO: {fileID: 0}
   currentIndexCharactor: 0
   currentGameLevel: 1
+  currentPlayer: {fileID: 0}
+  isOnMusic: 1

@@ -13,6 +13,8 @@ public class WinGame : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("win"),
+                                        Camera.main.transform.position);
             animator.SetTrigger("win");
             GameManager.Instance.WinGame();
             Debug.Log("va cham Goal!");

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
@@ -13,6 +14,11 @@ public class HomeUI : MonoBehaviour
     [SerializeField] private Button right, left;
     [SerializeField] private Transform spawnCharactorPos;
     [SerializeField] private TextMeshProUGUI levelText;
+
+    [SerializeField] private GameObject settingMusic;
+    [SerializeField] private Button musicButton;
+    [SerializeField] private Sprite On;
+    [SerializeField] private Sprite Off;
     #endregion
     private void Awake()
     {
@@ -28,7 +34,28 @@ public class HomeUI : MonoBehaviour
     void Start()
     { 
         StartCoroutine(LoadChar());
+        loadScene();
+    }
+
+    private void loadScene()
+    {
         DisplayTextLevel();
+        if(GameManager.Instance.isOnMusic) musicButton.image.sprite = On;
+        else musicButton.image.sprite = Off;
+    }
+
+    public void SettingOpenMusic()
+    {
+        if (GameManager.Instance.isOnMusic)
+        {
+            musicButton.image.sprite = Off;
+            GameManager.Instance.isOnMusic = false;
+        }
+        else
+        {
+            musicButton.image.sprite = On;
+            GameManager.Instance.isOnMusic = true;
+        }
     }
     public IEnumerator LoadChar()
     {
@@ -74,6 +101,11 @@ public class HomeUI : MonoBehaviour
     }
     public void SettingButton()
     {
+        if (settingMusic.activeSelf)
+        {
+            settingMusic.gameObject.SetActive(false);
+        }
+        else settingMusic.gameObject.SetActive(true);
         Debug.Log("Setting Game!");
     }
     public void ExitGameButton()

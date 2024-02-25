@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentIndexCharactor;
     [SerializeField] private int currentGameLevel;
     [SerializeField] private GameObject currentPlayer;
+
+
+    public bool isOnMusic;
     
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
     }
+
     public Vector3 GetPlayerPosition() => currentPlayer.transform.position;
     public GameObject SetCurrentPlayer(GameObject player) => currentPlayer = player;
     public GameObject GetCurrentPlayer() => currentPlayer;
@@ -44,7 +48,6 @@ public class GameManager : MonoBehaviour
     }
     public Sprite getCurrentPlayerSprite() => currentPlayerSO.spriteCharactor;
     public GameObject getCurrentPlayerPrefab() => currentPlayerSO.charactorPrefab;
-    public String getCurrentPlayerName() => currentPlayerSO.name;
     public void setCurrentGameLevel(int lv)
     {
         currentGameLevel = lv;

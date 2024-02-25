@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using TMPro;
+using System;
 public class GamePlayUI : MonoBehaviour
 {
     public static GamePlayUI Instance;
@@ -14,7 +15,6 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] private GameObject setting;
     [SerializeField] private GameObject gameOver_WinPanel;
     [SerializeField] private TextMeshProUGUI gameText;
-    [SerializeField] private bool isOpenMusic;
     [SerializeField] private Button musicButton;
     [SerializeField] private Sprite On;
     [SerializeField] private Sprite Off;
@@ -31,8 +31,15 @@ public class GamePlayUI : MonoBehaviour
     }
     void Start()
     {
-        
+        loadScene();
     }
+
+    private void loadScene()
+    {
+        if(GameManager.Instance.isOnMusic) musicButton.image.sprite = On;
+        else musicButton.image.sprite = Off;
+    }
+
     void Update()
     {
         
@@ -52,15 +59,15 @@ public class GamePlayUI : MonoBehaviour
 
     public void SettingOpenMusic()
     {
-        if (isOpenMusic == true)
+        if (GameManager.Instance.isOnMusic)
         {
             musicButton.image.sprite = Off;
-            isOpenMusic = false;
+            GameManager.Instance.isOnMusic = false;
         }
         else
         {
             musicButton.image.sprite = On;
-            isOpenMusic = true;
+            GameManager.Instance.isOnMusic = true;
         }
     }
     public void Resume()
