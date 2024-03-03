@@ -282,6 +282,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &903838375 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+  m_PrefabInstance: {fileID: 4697270611772043890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1544084193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1415,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound
       objectReference: {fileID: 0}
+    - target: {fileID: 3447019666447067056, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 903838375}
+    - target: {fileID: 3447019666447067056, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 903838375}
     - target: {fileID: 4940296465362321908, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.837502
@@ -1457,6 +1470,10 @@ PrefabInstance:
     - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
       propertyPath: m_Volume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -59,11 +59,13 @@ public class HomeUI : MonoBehaviour
     }
     public IEnumerator LoadChar()
     {
-        if(GameObject.FindGameObjectWithTag("Player") != null) Destroy(GameObject.FindGameObjectWithTag("Player"));
+        if (GameObject.FindGameObjectWithTag("Player") != null) Destroy(GameObject.FindGameObjectWithTag("Player"));
         yield return new WaitForSeconds(0f);
         GameObject newChar = Instantiate(GameManager.Instance.getCurrentPlayerPrefab(), spawnCharactorPos.position, Quaternion.identity);
+        newChar.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         newChar.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         newChar.GetComponent<PlayerController>().setGround(LayerMask.NameToLayer("Everything"));
+
     }
     public void NextCharactor()
     {

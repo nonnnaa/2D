@@ -1,26 +1,36 @@
 using UnityEngine;
-
 public class PlayBGAudio : MonoBehaviour
 {
-    AudioSource audio;
+    private AudioSource audioSource;
     bool isOn;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
-        audio = GetComponent<AudioSource>();    
-        if(GameManager.Instance.isOnMusic) audio.Play();
+        isOn = true;
+        if (GameManager.Instance.isOnMusic)
+        {
+            PlayAudioWithVolumn(0.1f, audioSource);
+        }
     }
     private void Update()
     {
-        if (Health.Instance.GetCurrentHp() <= 0 || GameManager.Instance.isOnMusic == false)
+        if (GameManager.Instance.isOnMusic == false)
         {
-            audio.Pause();
-            GameManager.Instance.isOnMusic = false;
+            audioSource.Pause();
             isOn = false;
         }
         if(GameManager.Instance.isOnMusic == true && isOn == false)
         {
-            audio.UnPause();
+            audioSource.UnPause();
             isOn = true;
         }
+    }
+    public void PlayAudioWithVolumn(float volumn, AudioSource audioS)
+    {
+        audioS.volume = volumn;
+        audioS.Play();
     }
 }

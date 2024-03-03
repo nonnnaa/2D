@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 using TMPro;
 using System;
 public class GamePlayUI : MonoBehaviour
@@ -14,10 +11,18 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] private GameObject healthbar;
     [SerializeField] private GameObject setting;
     [SerializeField] private GameObject gameOver_WinPanel;
+    [SerializeField] private GameObject ScoreUI;
     [SerializeField] private TextMeshProUGUI gameText;
     [SerializeField] private Button musicButton;
     [SerializeField] private Sprite On;
     [SerializeField] private Sprite Off;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI bestScoreText;
+    private float startTime, endTime;
+
+
+    [SerializeField] private int best;
     private void Awake()
     {
         if (Instance != null && this != Instance)
@@ -32,12 +37,29 @@ public class GamePlayUI : MonoBehaviour
     void Start()
     {
         loadScene();
+        startTime = Time.time;
     }
 
     private void loadScene()
     {
         if(GameManager.Instance.isOnMusic) musicButton.image.sprite = On;
         else musicButton.image.sprite = Off;
+    }
+
+    private void LoadScore()
+    {
+        int tmp_score = (int)(endTime - startTime);
+        best = GameManager.Instance.getScore(GameManager.Instance.getCurrentGameLevel());
+        scoreText.text = "New : " + tmp_score;
+        bestScoreText.text = "Old : " + best;
+        Debug.Log(best);
+        if (tmp_score <= best)
+        {
+            PlayerPrefs.SetInt(GameManager.Instance.getCurrentStringBestScore(GameManager.Instance.getCurrentGameLevel()), tmp_score);
+            PlayerPrefs.Save();
+            Debug.Log(PlayerPrefs.GetInt(GameManager.Instance.getCurrentStringBestScore(1)));
+            Debug.Log(PlayerPrefs.GetInt(GameManager.Instance.getCurrentStringBestScore(2)));
+        }
     }
 
     void Update()
@@ -56,7 +78,6 @@ public class GamePlayUI : MonoBehaviour
             setting.gameObject.SetActive(true);
         }
     }
-
     public void SettingOpenMusic()
     {
         if (GameManager.Instance.isOnMusic)
@@ -81,7 +102,13 @@ public class GamePlayUI : MonoBehaviour
     public void GameOver_WinPanel(string s)
     {
         gameText.text = s;
+        endTime = Time.time;
         gameOver_WinPanel.SetActive(true);
+        if (s == "Win !")
+        {
+            ScoreUI.SetActive(true);
+            LoadScore();
+        }
     }
     public void Restart()
     {

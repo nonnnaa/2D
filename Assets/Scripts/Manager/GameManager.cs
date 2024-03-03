@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentGameLevel;
     [SerializeField] private GameObject currentPlayer;
 
-
     public bool isOnMusic;
-    
+    public float volumnGame;
+    private string bestScore1_string = "bestScore1";
+    private string bestScore2_string = "bestScore2";
     private void Awake()
     {
-
         if (Instance != null && this != Instance)
         {
             Destroy(gameObject);
@@ -32,9 +32,25 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        //PlayerPrefs.SetInt(bestScore1_string, 100);
+        //PlayerPrefs.SetInt(bestScore2_string, 100);
+        //PlayerPrefs.Save();
+        //PlayerPrefs.DeleteKey(bestScore1_string);
+        //PlayerPrefs.DeleteKey(bestScore2_string);
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
+        Debug.Log(PlayerPrefs.GetInt(bestScore1_string));
+        Debug.Log(PlayerPrefs.GetInt(bestScore2_string));
     }
-
+    public int getScore(int index)
+    {
+        if (index == 1) return PlayerPrefs.GetInt(bestScore1_string);
+        else return PlayerPrefs.GetInt(bestScore2_string);
+    }
+    public string getCurrentStringBestScore(int index)
+    {
+        if (index == 1) return bestScore1_string;
+        return bestScore2_string;
+    }
     public Vector3 GetPlayerPosition() => currentPlayer.transform.position;
     public GameObject SetCurrentPlayer(GameObject player) => currentPlayer = player;
     public GameObject GetCurrentPlayer() => currentPlayer;

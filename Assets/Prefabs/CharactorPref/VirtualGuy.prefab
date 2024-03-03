@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
-  isInvincible: 0
 --- !u!114 &5551902056739578126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpPower: 12
+  jumpPower: 15
   radiusGroundCheck: 0.2
   wallCheckDistance: 0.7
   wallSlidingSpeed: 0.7

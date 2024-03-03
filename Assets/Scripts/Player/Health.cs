@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public static Health Instance;
-    [SerializeField] private float currentHp;
+    [SerializeField] private int currentHp;
     private int maxhp;
     private void Awake()
     {
@@ -37,11 +37,12 @@ public class Health : MonoBehaviour
             AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("collector"),
                                         GameObject.FindGameObjectWithTag("MainCamera").transform.position);
             currentHp++;
+            if (currentHp > maxhp) maxhp = currentHp;
             Destroy(collision.gameObject);
             GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         }
     }
-    public void GetDame(float dame)
+    public void GetDame(int dame)
     {
         AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("hit"),
                                     GameObject.FindGameObjectWithTag("MainCamera").transform.position);
@@ -67,5 +68,5 @@ public class Health : MonoBehaviour
         GamePlayUI.Instance.GameOver_WinPanel("Lose !");
         gameObject.SetActive(false);
     }
-    public float GetCurrentHp() => currentHp;
+    public int GetCurrentHp() => currentHp;
 }
