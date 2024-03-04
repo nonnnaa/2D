@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentGameLevel;
     [SerializeField] private GameObject currentPlayer;
 
-    public bool isOnMusic;
-    public float volumnGame;
+    public String isOnMusic = "On_Off";
     private string bestScore1_string = "bestScore1";
     private string bestScore2_string = "bestScore2";
+    [SerializeField] private int currentFruits;
+    [SerializeField] private int[] fruitsLevel;
     private void Awake()
     {
         if (Instance != null && this != Instance)
@@ -37,10 +38,20 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.Save();
         //PlayerPrefs.DeleteKey(bestScore1_string);
         //PlayerPrefs.DeleteKey(bestScore2_string);
+        //PlayerPrefs.SetString(isOnMusic, "On");
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
         Debug.Log(PlayerPrefs.GetInt(bestScore1_string));
         Debug.Log(PlayerPrefs.GetInt(bestScore2_string));
+        Debug.Log(PlayerPrefs.GetString(isOnMusic));
     }
+
+    public string GetIsOnMusic()
+    {
+        return PlayerPrefs.GetString(isOnMusic);
+    }
+    public int getCurrentFruits() => currentFruits;
+    public void setCurrentFruit(int mount) => currentFruits += mount;
+    public int getFruitsLevel(int index) => fruitsLevel[index-1];
     public int getScore(int index)
     {
         if (index == 1) return PlayerPrefs.GetInt(bestScore1_string);
@@ -54,7 +65,13 @@ public class GameManager : MonoBehaviour
     public Vector3 GetPlayerPosition() => currentPlayer.transform.position;
     public GameObject SetCurrentPlayer(GameObject player) => currentPlayer = player;
     public GameObject GetCurrentPlayer() => currentPlayer;
-    public void LoadGame() => SceneManager.LoadScene(currentGameLevel);
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(currentGameLevel);
+        currentFruits = 0;
+
+    }
+
     public int getMaxHp() => currentPlayerSO.maxHP;
     public int getCurrentIndexCharactor() => currentIndexCharactor;
     public void setCurrentIndexCharactor(int id)

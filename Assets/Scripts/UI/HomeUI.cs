@@ -40,22 +40,23 @@ public class HomeUI : MonoBehaviour
     private void loadScene()
     {
         DisplayTextLevel();
-        if(GameManager.Instance.isOnMusic) musicButton.image.sprite = On;
+        if(PlayerPrefs.GetString(GameManager.Instance.isOnMusic) == "On") musicButton.image.sprite = On;
         else musicButton.image.sprite = Off;
     }
 
     public void SettingOpenMusic()
     {
-        if (GameManager.Instance.isOnMusic)
+        if (PlayerPrefs.GetString(GameManager.Instance.isOnMusic) == "On")
         {
             musicButton.image.sprite = Off;
-            GameManager.Instance.isOnMusic = false;
+            PlayerPrefs.SetString(GameManager.Instance.isOnMusic, "Off");
         }
         else
         {
             musicButton.image.sprite = On;
-            GameManager.Instance.isOnMusic = true;
+            PlayerPrefs.SetString(GameManager.Instance.isOnMusic, "On");
         }
+        PlayerPrefs.Save();
     }
     public IEnumerator LoadChar()
     {

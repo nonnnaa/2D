@@ -1,36 +1,45 @@
 using UnityEngine;
 public class PlayBGAudio : MonoBehaviour
 {
-    private AudioSource audioSource;
-    bool isOn;
+    public static PlayBGAudio Instance;
+    [SerializeField] private AudioSource audioSourceBG;
+    [SerializeField] private AudioSource audioSourceSfx;
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (Instance != null && this != Instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
     void Start()
-    {
-        isOn = true;
-        if (GameManager.Instance.isOnMusic)
+    { 
+        if (GameManager.Instance.GetIsOnMusic() == "On")
         {
-            PlayAudioWithVolumn(0.1f, audioSource);
+            PlayAudioWithVolumn(0.1f, audioSourceBG.clip, "On");
         }
     }
     private void Update()
     {
-        if (GameManager.Instance.isOnMusic == false)
+        if (GameManager.Instance.GetIsOnMusic() == "Off")
         {
-            audioSource.Pause();
-            isOn = false;
+            audioSourceBG.Pause();
         }
-        if(GameManager.Instance.isOnMusic == true && isOn == false)
+        if(GameManager.Instance.GetIsOnMusic() == "On")
         {
-            audioSource.UnPause();
-            isOn = true;
+            audioSourceBG.UnPause();
         }
     }
-    public void PlayAudioWithVolumn(float volumn, AudioSource audioS)
+    public void PlayAudioWithVolumn(float volumn, AudioClip audio, string isPlay)
     {
-        audioS.volume = volumn;
-        audioS.Play();
+        if(isPlay == "On")
+        {
+            audioSourceSfx.clip = audio;
+            audioSourceSfx.volume = volumn;
+            audioSourceSfx.Play();
+        }
     }
 }

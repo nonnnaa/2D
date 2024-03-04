@@ -17,11 +17,12 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] private Sprite On;
     [SerializeField] private Sprite Off;
 
+    [SerializeField] private TextMeshProUGUI textFruits;
+
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI bestScoreText;
     private float startTime, endTime;
-
-
+    [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private int best;
     private void Awake()
     {
@@ -42,8 +43,9 @@ public class GamePlayUI : MonoBehaviour
 
     private void loadScene()
     {
-        if(GameManager.Instance.isOnMusic) musicButton.image.sprite = On;
+        if(GameManager.Instance.GetIsOnMusic() == "On") musicButton.image.sprite = On;
         else musicButton.image.sprite = Off;
+        updateFruitsText();
     }
 
     private void LoadScore()
@@ -64,7 +66,7 @@ public class GamePlayUI : MonoBehaviour
 
     void Update()
     {
-        
+        timeText.text = "Time : " + ((int)(Time.time - startTime)).ToString();
     }
     // ---------------  Game  -----------------------
     public void SetHealthbar(float ratio)
@@ -80,16 +82,17 @@ public class GamePlayUI : MonoBehaviour
     }
     public void SettingOpenMusic()
     {
-        if (GameManager.Instance.isOnMusic)
+        if (PlayerPrefs.GetString(GameManager.Instance.isOnMusic) == "On")
         {
             musicButton.image.sprite = Off;
-            GameManager.Instance.isOnMusic = false;
+            PlayerPrefs.SetString(GameManager.Instance.isOnMusic, "Off");
         }
         else
         {
             musicButton.image.sprite = On;
-            GameManager.Instance.isOnMusic = true;
+            PlayerPrefs.SetString(GameManager.Instance.isOnMusic, "On");
         }
+        PlayerPrefs.Save();
     }
     public void Resume()
     {
@@ -109,6 +112,11 @@ public class GamePlayUI : MonoBehaviour
             ScoreUI.SetActive(true);
             LoadScore();
         }
+    }
+
+    public void updateFruitsText()
+    {
+        textFruits.text = "Fruits : " + GameManager.Instance.getCurrentFruits() + "/" + GameManager.Instance.getFruitsLevel(GameManager.Instance.getCurrentGameLevel());
     }
     public void Restart()
     {

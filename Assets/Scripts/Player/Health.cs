@@ -34,9 +34,12 @@ public class Health : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Fruit"))
         {
-            AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("collector"),
-                                        GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+            //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("collector"),
+            //                            GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+            PlayBGAudio.Instance.PlayAudioWithVolumn(1, GameResourse.Instance.getAudioClip("collector"), GameManager.Instance.GetIsOnMusic());
             currentHp++;
+            GameManager.Instance.setCurrentFruit(1);
+            GamePlayUI.Instance.updateFruitsText();
             if (currentHp > maxhp) maxhp = currentHp;
             Destroy(collision.gameObject);
             GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
@@ -44,8 +47,9 @@ public class Health : MonoBehaviour
     }
     public void GetDame(int dame)
     {
-        AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("hit"),
-                                    GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("hit"),
+        //                            GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        PlayBGAudio.Instance.PlayAudioWithVolumn(1, GameResourse.Instance.getAudioClip("hit"), GameManager.Instance.GetIsOnMusic());
         currentHp -= dame;
         GamePlayUI.Instance.SetHealthbar((float)currentHp / maxhp);
         PlayerController.Instance.GetAnimator().SetTrigger("GetDame");
@@ -61,8 +65,9 @@ public class Health : MonoBehaviour
     }
     IEnumerator IDie()
     {
-        AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("lose"),
-                                    GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("lose"),
+        //                            GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        PlayBGAudio.Instance.PlayAudioWithVolumn(1, GameResourse.Instance.getAudioClip("lose"), GameManager.Instance.GetIsOnMusic());
         PlayerController.Instance.GetAnimator().SetTrigger("die");
         yield return new WaitForSeconds(0.3f);
         GamePlayUI.Instance.GameOver_WinPanel("Lose !");

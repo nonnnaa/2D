@@ -49,8 +49,9 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.name = "Player";
         anim.SetTrigger("ap");
-        AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("appearing"), 
-            transform.position);
+        //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("appearing"), 
+        //    transform.position);
+        PlayBGAudio.Instance.PlayAudioWithVolumn(1,GameResourse.Instance.getAudioClip("appearing"),GameManager.Instance.GetIsOnMusic());
     }
     void Update()
     {
@@ -93,8 +94,9 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true) jumpCount = 0;
         if (jumpCount < 2)
         {
-            AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("jump"), 
-                GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+            //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("jump"), 
+            //    GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+            PlayBGAudio.Instance.PlayAudioWithVolumn(1, GameResourse.Instance.getAudioClip("jump"), GameManager.Instance.GetIsOnMusic());
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
     }
