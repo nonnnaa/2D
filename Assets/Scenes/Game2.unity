@@ -848,12 +848,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 47f45ef7b5767674393cc401fc325705, type: 3}
+    - target: {fileID: 6902335413741061042, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

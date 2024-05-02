@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+    }
+
+    private void OnEnable()
+    {
         t = Time.time;
     }
 
@@ -17,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         if (Time.time - t > timeToDestroyBullet)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -26,7 +31,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Health.Instance.GetDame(1);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

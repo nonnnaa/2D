@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Plant : MonoBehaviour
@@ -11,6 +12,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private float speedBullet;
     [SerializeField] private float delayAttack;
     [SerializeField] private bool canAttack;
+    [SerializeField] private List<GameObject> bulletPool;
+    [SerializeField] private int amountToPool;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -46,8 +49,25 @@ public class Plant : MonoBehaviour
     }
     public void SpawnBullet()
     {
-        var bullet = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
-        float tmp = Time.time;
-        bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * speedBullet, ForceMode2D.Impulse);
+        if(bulletPool.Count < amountToPool)
+        {
+            var bullet = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+            float tmp = Time.time;
+            bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * speedBullet, ForceMode2D.Impulse);
+            bulletPool.Add(bullet);
+        }
+        else
+        {
+            foreach(var bullet in bulletPool)
+            {
+                if(!bullet.gameObject.activeInHierarchy)
+                {
+                    bullet.SetActive(true);
+                    bullet.gameObject.GetComponent<Transform>().position = firePos.position;
+                    bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * speedBullet, ForceMode2D.Impulse);
+                    break;
+                }
+            }
+        }
     }
 }

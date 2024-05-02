@@ -575,9 +575,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343983766652960174, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
+    - target: {fileID: 6902335413741061042, guid: ee23448c53cefac478c72f6bf4b03d95, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -778,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 805426051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -1.61, y: 1.38, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1417,6 +1425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1720083987536652111, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
+      propertyPath: amountToPool
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6429137471804300393, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
       propertyPath: m_Name
       value: Plant (2)
@@ -1478,6 +1490,10 @@ PrefabInstance:
     - target: {fileID: 245323370786478957, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720083987536652111, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
+      propertyPath: amountToPool
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6429137471804300393, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
       propertyPath: m_Name
@@ -1631,6 +1647,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7088698468964658214, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088698468964658214, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088698468964658214, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736506100941872840, guid: 8609d71ffe2ae1f4eb61b1e19ced00ff, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -59197,6 +59245,10 @@ PrefabInstance:
     - target: {fileID: 245323370786478957, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720083987536652111, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
+      propertyPath: amountToPool
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6429137471804300393, guid: 15668a81011f5cc4cb4451b025beeb7b, type: 3}
       propertyPath: m_Name

@@ -33,12 +33,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //PlayerPrefs.SetInt(bestScore1_string, 100);
-        //PlayerPrefs.SetInt(bestScore2_string, 100);
-        //PlayerPrefs.Save();
-        //PlayerPrefs.DeleteKey(bestScore1_string);
-        //PlayerPrefs.DeleteKey(bestScore2_string);
-        //PlayerPrefs.SetString(isOnMusic, "On");
         currentPlayerSO = GameResourse.Instance.getCurrentInforCharactor(currentIndexCharactor);
         Debug.Log(PlayerPrefs.GetInt(bestScore1_string));
         Debug.Log(PlayerPrefs.GetInt(bestScore2_string));

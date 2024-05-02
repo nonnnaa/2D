@@ -15,8 +15,6 @@ public class WinGame : MonoBehaviour
         if (collision.gameObject.tag == "Player" 
             && GameManager.Instance.getCurrentFruits() >= GameManager.Instance.getFruitsLevel(GameManager.Instance.getCurrentGameLevel()))
         {
-            //AudioSource.PlayClipAtPoint(GameResourse.Instance.getAudioClip("win"),
-            //                            Camera.main.transform.position);
             PlayBGAudio.Instance.PlayAudioWithVolumn(1, GameResourse.Instance.getAudioClip("win"), GameManager.Instance.GetIsOnMusic());
             animator.SetTrigger("win");
             GameManager.Instance.WinGame();
